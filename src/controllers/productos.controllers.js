@@ -11,7 +11,6 @@ export const leerProductos = (req, res) => {};
 export const crearProducto = async (req, res) => {
   try {
     // recibir el objeto que tengo que agregar a la BD
-    console.log(req.body)
     // Validar los datos del objeto
     // guardar el objeto en la base de datos
     const nuevoProducto = new Producto(req.body)

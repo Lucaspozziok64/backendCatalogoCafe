@@ -26,6 +26,25 @@ const validacionProducto = [
     .withMessage(
       "La imagen debe ser una URL valida y debe terminar en .jpg, .jpeg, .png o .wep"
     ),
+  body("categoria")
+    .notEmpty()
+    .withMessage("La categforia es un dato obligatorio")
+    .isIn(["Dulce", "Batidos", "Infusiones", "Salado"])
+    .withMessage(
+      "La categoria debe ser una del as siguientes opciones: Infusiones, Batidos, Dulce, Salado"
+    ),
+  body("descripcion_breve")
+    .notEmpty()
+    .withMessage("La descripcion breve es obligatoria")
+    .isLength({ min: 5, max: 250 })
+    .withMessage(
+      "La descripcion breve debe tener entre 5 y 250 caracteres"
+    ),
+  body("descripcion_amplia")
+    .notEmpty()
+    .withMessage("La descripcion amplia es obligatoria")
+    .isLength({ min: 10, max: 500 })
+    .withMessage("La descripcion amplia debe tener entre 10 y 500 caracteres"),
   (req, res, next) => resultadoValidacion(req, res, next),
 ];
 

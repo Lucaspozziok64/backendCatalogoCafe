@@ -15,3 +15,13 @@ export const crearUsuario = async (req, res) => {
     res.status(500).json({ mensaje: "Error al crear el producto" });
   }
 };
+
+export const leerUsuarios = async (req, res) => {
+  try {
+    const listaUsuarios = await Usuario.find()
+        res.status(201).json(listaUsuarios);
+  } catch (error) {
+    console.error(error)
+        res.status(500).json({ mensaje: 'Error al leer los usuarios' })
+  }
+}
